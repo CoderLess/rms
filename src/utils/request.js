@@ -22,6 +22,8 @@ service.interceptors.response.use(
     // 全局：根据响应码处理
     if (response.status !== 200) {
       console.log(res)
+    } else {
+      return res
     }
   }
 )

@@ -1,12 +1,10 @@
 <template>
   <div class="login-container">
-    <el-form
-      ref="loginForm"
-      :model="loginForm"
-      :rules="loginRules"
-      class="login-form"
-      label-position="left"
-    >
+    <el-form ref="loginForm"
+             :model="loginForm"
+             :rules="loginRules"
+             class="login-form"
+             label-position="left">
       <div class="title-container">
         <h3 class="title">系统登录</h3>
       </div>
@@ -14,21 +12,23 @@
         <span class="svg-container">
           <span class="iconfont iconyonghuming"></span>
         </span>
-        <el-input ref="username" v-model="loginForm.username" placeholder="手机号"></el-input>
+        <el-input ref="username"
+                  v-model="loginForm.username"
+                  placeholder="手机号"></el-input>
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
           <span class="iconfont iconmima"></span>
         </span>
-        <el-input v-model="loginForm.password" type="password" placeholder="6-20位字母、数字、下划线组成"></el-input>
+        <el-input v-model="loginForm.password"
+                  type="password"
+                  placeholder="6-20位字母、数字、下划线组成"></el-input>
       </el-form-item>
 
-      <el-button
-        :loading="loading"
-        type="primary"
-        style="width:100%;margin-bottom:30px;"
-        @click.native.prevent="handleLogin"
-      >登录</el-button>
+      <el-button :loading="loading"
+                 type="primary"
+                 style="width:100%;margin-bottom:30px;"
+                 @click.native.prevent="handleLogin">登录</el-button>
     </el-form>
   </div>
 </template>
@@ -80,7 +80,6 @@ export default {
             .catch(() => {
               this.loading = false
             })
-          console.log('success')
         } else {
           return false
         }

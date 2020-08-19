@@ -9,8 +9,7 @@
 import { login } from '@/api/user.js'
 import { getToken, setToken } from '@/utils/token.js'
 const state = {
-  token: getToken(),
-  user: {}
+  token: getToken()
 }
 
 const mutations = {
@@ -25,10 +24,9 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
-        // resolve()
-        console.log('1111111111')
+        commit('SET_TOKEN', data)
+        setToken(data)
+        resolve()
       }).catch(error => {
         reject(error)
       })
