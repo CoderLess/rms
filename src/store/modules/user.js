@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \rms\src\store\modules\user.js
  */
-import { login } from '@/api/user.js'
+import { login, getUserInfo } from '@/api/user.js'
 import { getToken, setToken } from '@/utils/token.js'
 const state = {
   token: getToken()
@@ -26,6 +26,15 @@ const actions = {
         const { data } = response
         commit('SET_TOKEN', data)
         setToken(data)
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  getInfo ({ commit }) {
+    return new Promise((resolve, reject) => {
+      getUserInfo().then(response => {
         resolve()
       }).catch(error => {
         reject(error)

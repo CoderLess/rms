@@ -21,7 +21,6 @@ service.interceptors.response.use(
     const res = response.data
     // 全局：根据响应码处理
     if (response.status !== 200) {
-      console.log(res)
     } else {
       return res
     }
