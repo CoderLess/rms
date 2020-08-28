@@ -1,7 +1,7 @@
 /*
  * @Author: RenBin
  * @Date: 2020-08-07 18:07:38
- * @LastEditTime: 2020-08-07 18:37:37
+ * @LastEditTime: 2020-08-28 15:54:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \rms\src\store\modules\user.js
@@ -32,9 +32,10 @@ const actions = {
       })
     })
   },
-  getInfo ({ commit }) {
+  getUserInfo ({ commit }) {
     return new Promise((resolve, reject) => {
       getUserInfo().then(response => {
+        console.log(response)
         resolve()
       }).catch(error => {
         reject(error)
