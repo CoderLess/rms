@@ -8,6 +8,7 @@
  */
 import axios from 'axios'
 import store from '@/store/index.js'
+import Vue from 'vue'
 import { getToken } from '@/utils/token.js'
 // 创建一个axios的实例
 const service = axios.create({
@@ -29,10 +30,12 @@ service.interceptors.response.use(
     const res = response.data
     // 全局：根据响应码处理
     if (res.status !== 200) {
-      console.log('11111111')
-      this.$message(res.message)
+      // 请求异常
+      // 这里的this不是vue对象，所以不能用this.$message
+      Vue.prototype.$message.error(res.message)
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
+      // 请求结果正常返回
       return res
     }
   }

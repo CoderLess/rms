@@ -10,17 +10,20 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import store from './store/index.js'
+import Element from 'element-ui'
 
 // element-ui样式
 import 'element-ui/lib/theme-chalk/index.css'
 
-import './plugins/element-ui.js'
+// import './plugins/element-ui.js'
 // 全局样式
 import './styles/index.scss'
 // 图标
 import './icons/iconfont.css'
 
 Vue.config.productionTip = false
+
+Vue.use(Element)
 
 // 从根组件注入到每一个子组件
 new Vue({

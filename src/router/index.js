@@ -8,24 +8,34 @@
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { getToken } from '@/utils/token'
-// import store from '@/store/index'
+// import { getToken } from '@/utils/token'
+import store from '@/store/index'
+import Layout from '@/layout/index'
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   redirect: '/index'
-  // },
+  // 根目录跳转
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Dashboard'
+      }
+    ]
+  },
   // 用户登入
   {
     path: '/login',
     component: () => import('@/views/login/index')
   },
+  // 用户登入后的主页面
   {
-    path: '/index',
+    path: '/dashboard',
     component: () => import('@/views/dashboard/index')
   }
 ]
@@ -37,11 +47,10 @@ const router = new VueRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  const token = getToken()
-  if (token) {
+  const token = store.getters.token
+  if (token && store.getters.role.length < 1) {
     // 如果已经登入了，检测一下有没有角色
-    // const res = await store.dispatch('user/getInfo')
-    // console.log(res)
+    await store.dispatch('user/userInfo')
     next()
   } else {
     next()
