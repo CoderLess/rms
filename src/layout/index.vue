@@ -11,6 +11,7 @@
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <tag-view />
+      <app-main />
     </div>
   </div>
 </template>
@@ -18,9 +19,10 @@
 <script>
 import Sidebar from './components/sidebar/index.vue'
 import TagView from './components/tagView/index.vue'
+import AppMain from './components/AppMain.vue'
 
 export default {
-  components: { Sidebar, TagView }
+  components: { Sidebar, TagView, AppMain }
 }
 </script>
 
@@ -31,6 +33,12 @@ export default {
   width: 100%;
 }
 .sidebar-container {
-  width: 300px;
+  width: 200px;
+  height: 100%;
+  position: absolute;
+  background-color: #304156;
+}
+.main-container {
+  margin-left: 200px;
 }
 </style>

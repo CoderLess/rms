@@ -9,18 +9,17 @@
 <template>
   <div class="sildbar-container">
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu
-        :default-active="activeMenu"
-        :unique-opened="false"
-        :collapse-transition="false"
-        mode="vertical"
-      >
-        <sidebar-item
-          v-for="route in routes"
-          :key="route.path"
-          :item="route"
-          :base-path="route.path"
-        />
+      <el-menu :default-active="activeMenu"
+               :unique-opened="false"
+               :collapse-transition="false"
+               background-color="#304156"
+               text-color="#ffffff"
+               active-text-color="#409EFF"
+               mode="vertical">
+        <sidebar-item v-for="route in routes"
+                      :key="route.path"
+                      :item="route"
+                      :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -63,5 +62,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.el-menu-item {
+  background: #304156;
+}
 </style>

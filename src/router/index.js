@@ -37,6 +37,20 @@ const routes = [
   {
     path: '/dashboard',
     component: () => import('@/views/dashboard/index')
+  },
+  // 侧边栏菜单
+  {
+    path: '/pdf',
+    component: Layout,
+    redirect: '/pdf/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/pdf/index'),
+        name: 'PDF',
+        meta: { title: 'PDF', icon: 'pdf' }
+      }
+    ]
   }
 ]
 
