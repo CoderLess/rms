@@ -1,7 +1,17 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-09-01 08:14:18
+ * @LastEditTime: 2020-09-04 16:05:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \rms\src\layout\index.vue
+-->
 <template>
   <div class="app-wrapper">
     <sidebar class="sidebar-container" />
-    <tag-view />
+    <div class="main-container">
+      <tag-view />
+    </div>
   </div>
 </template>
 
@@ -14,5 +24,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.app-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.sidebar-container {
+  width: 300px;
+}
 </style>

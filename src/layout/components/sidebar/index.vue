@@ -1,14 +1,26 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-09-01 08:14:18
+ * @LastEditTime: 2020-09-04 14:32:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \rms\src\layout\components\sidebar\index.vue
+-->
 <template>
   <div class="sildbar-container">
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu :default-active="activeMenu"
-               :unique-opened="false"
-               :collapse-transition="false"
-               mode="vertical">
-        <sidebar-item v-for="route in permission_routes"
-                      :key="route.path"
-                      :item="route"
-                      :base-path="route.path" />
+      <el-menu
+        :default-active="activeMenu"
+        :unique-opened="false"
+        :collapse-transition="false"
+        mode="vertical"
+      >
+        <sidebar-item
+          v-for="route in routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -17,19 +29,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
+import { menuList } from '@/api/menu.js'
 export default {
   components: { SidebarItem },
   data () {
     return {
-      permission_routes: {
-        path: {},
-        hidden: {},
-        alwaysShow: {},
-        children: {},
-        meta: {
-          title: '123'
-        }
-      }
+      routes: []
     }
   },
   computed: {
@@ -49,6 +54,11 @@ export default {
     // isCollapse () {
     //   return !this.sidebar.opened
     // }
+  },
+  created () {
+    this.routes = menuList().then(response => {
+      this.routes = response.data
+    })
   }
 }
 </script>
