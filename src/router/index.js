@@ -1,14 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2020-08-28 10:18:08
- * @LastEditTime: 2020-08-28 15:49:16
+ * @LastEditTime: 2020-09-07 08:50:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \rms\src\router\index.js
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import { getToken } from '@/utils/token'
 import store from '@/store/index'
 import Layout from '@/layout/index'
 
@@ -40,15 +39,15 @@ const routes = [
   },
   // 侧边栏菜单
   {
-    path: '/pdf',
+    path: '/upload',
     component: Layout,
-    redirect: '/pdf/index',
+    redirect: '/upload/uploadFile',
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/pdf/index'),
-        name: 'PDF',
-        meta: { title: 'PDF', icon: 'pdf' }
+        path: '/uploadFile',
+        component: () => import('@/views/upload/uploadFile'),
+        name: 'Upload-File',
+        meta: { title: 'Upload-File', icon: 'pdf' }
       }
     ]
   }
